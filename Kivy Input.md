@@ -13,7 +13,7 @@ Tags: Python,Kivy
 
 ## 输入体系
 
-Kivy能处理绝大多数的输入类型：鼠标，触摸屏，加速器，陀螺仪等等。并且针对以下平台能够处理多点触控的原生协议：Tuio, WM_Touch, MacMultitouchSupport, MT Protocol A/B 以及 Android。（译者注：第一个TUIO应该是通用多点触控，第二个怀疑是WindowsMobile的，第三个是苹果的多点触控，第四个不知道是啥，最后一个是Android的。）
+Kivy能处理绝大多数的输入类型：鼠标，触摸屏，加速器，陀螺仪等等。并且针对以下平台能够处理多点触控的原生协议：Tuio, WM_Touch, MacMultitouchSupport, MT Protocol A/B 以及 Android。（译者注：第一个TUIO应该是通用多点触控，第二个是Windows多点触控，最低支持win7，第三个是苹果的多点触控，第四个是多点触摸协议，分为A型（硬件不能区分不同触摸点）和B型（硬件可以区分不同触摸点），最后一个是Android的。）
 
 整体上输入体系的结构概括起来如下所示：
 
