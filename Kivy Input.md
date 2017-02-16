@@ -33,9 +33,9 @@ Input providers -> Motion event -> Post processing -> Dispatch to Window
 所有输入事件的类是[`MotionEvent`](https://kivy.org/docs/api-kivy.input.motionevent.html#kivy.input.motionevent.MotionEvent "kivy.input.motionevent.MotionEvent")。这个类生成两种事件：
 
 
-* Touch触控事件：包含位置信息，至少X和Y坐标位置的一种Motion动作事件。所有这种Touch事件都通过控件树进行分派。
+* Touch触控事件：至少包含一个x或者y坐标的Motion event。所有这种Touch事件都通过控件树进行分派。
 
-* Non-Touch非触控事件：其余的各种事件。例如加速度传感器就是一个持续的事件，不具有坐标位置。这一事件没有起止，一直在发生。这类的事件都不通过控件树来分派。
+* Non-Touch非触控事件：其余的各种事件。例如加速度传感器就是一个持续的事件，不具有坐标信息。这一事件没有起止，一直在发生。这类事件都不通过控件树来分派。
 
 
 Motion动作事件是由[`InputProvider`](https://kivy.org/docs/api-kivy.input.providers.html#module-kivy.input.providers "kivy.input.providers")生成的。 
