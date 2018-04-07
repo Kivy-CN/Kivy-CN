@@ -1,5 +1,9 @@
 # Kivy中文编程指南
 
+> 注意
+>
+> 译者无法提供任何技术支持。如果你需要帮助，请在 [SegmentFault](https://segmentfault.com/) 或 [StackOverflow](https://stackoverflow.com/) 上提问。谢谢合作。
+
 ## Kivy 是什么？
 
 Kivy 是一个开源的 Python 框架，用于快速开发应用，实现各种当前流行的用户界面，比如多点触摸等等。
