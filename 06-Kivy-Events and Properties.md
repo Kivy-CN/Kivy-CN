@@ -8,14 +8,14 @@ Tags: Python,Kivy
 
 [英文原文](https://kivy.org/docs/guide/events.html)
 
-##译者前言
+## 译者前言
 这一章节是我有史以来翻译质量的低谷，一来是我自己也是刚学，半懂不懂，二来本身语言基础各方面也薄弱，三来是笔记本坏掉了，搞个ChromeOS折腾中。
 
 大家凑合看看，看不下去给指出来一下比较不好理解和绕的地方，以及错误的地方，我一定即时修改。
 
 
 
-##简要介绍
+## 简要介绍
 
 在Kivy开发过程中，事件是最重要的一部分了。如果之前有过GUI图形界面开发的经验的话，你可能对此习以为常了，但对新手来说，这个概念很重要。一旦你理解了事件的应用和搭配，你就会发现在Kivy开发的过程中，事件是无处不在的。有了各种事件的搭配，你就可以用Kivy来搭建你想要的各种功能了。
 
@@ -25,18 +25,21 @@ Tags: Python,Kivy
 
 ![../_images/Events.png](http://kivy.org/docs/_images/Events.png)
 
-
-
-## 事件分派器
+![Events_zh](https://user-images.githubusercontent.com/58334061/208930458-4a4cc4eb-1025-4ea1-950f-73108d64c386.jpg)
 
 
 
 
-事件分派器[EventDispatcher](http://kivy.org/docs/api-kivy.event.html#kivy.event.EventDispatcher "kivy.event.EventDispatcher") c是Kivy框架中最重要的基类之一。通过这个类，用户可以注册各种事件，然后分发给对应的部件（一般情况下是其他的事件分派器）。控件类[Widget](http://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget "kivy.uix.widget.Widget"), 动画类[Animation](http://kivy.org/docs/api-kivy.animation.html#kivy.animation.Animation "kivy.animation.Animation") 以及时间类[Clock](http://kivy.org/docs/api-kivy.clock.html#kivy.clock.Clock "kivy.clock.Clock") 都属于事件分派器。
+## 事件分发器
 
 
 
-事件分派器对象要在整个程序的循环流程的基础上来生成和处理各种事件。
+
+事件分发器[EventDispatcher](http://kivy.org/docs/api-kivy.event.html#kivy.event.EventDispatcher "kivy.event.EventDispatcher") c是Kivy框架中最重要的基类之一。通过这个类，用户可以注册各种事件，然后分发给对应的部件（一般情况下是其他的事件分发器）。控件类[Widget](http://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget "kivy.uix.widget.Widget"), 动画类[Animation](http://kivy.org/docs/api-kivy.animation.html#kivy.animation.Animation "kivy.animation.Animation") 以及时间类[Clock](http://kivy.org/docs/api-kivy.clock.html#kivy.clock.Clock "kivy.clock.Clock") 都属于事件分发器。
+
+
+
+事件分发器对象要在整个程序的循环流程的基础上来生成和处理各种事件。
 
 
 
@@ -147,10 +150,10 @@ Clock.schedule_once(my_callback, 1)
 
 ```Python
 
-#首先是用schedule_once()计划调用一次
+# 首先是用schedule_once()计划调用一次
 event = Clock.schedule_once(my_callback, 0)
 
-#然后在另外一个位置，就用unschedule()取消计划调用，这样就能避免重复调用。接下来就是再次用schedule_once()进行计划调用。
+# 然后在另外一个位置，就用unschedule()取消计划调用，这样就能避免重复调用。接下来就是再次用schedule_once()进行计划调用。
 Clock.unschedule(event)
 event = Clock.schedule_once(my_callback, 0)
 
@@ -173,7 +176,7 @@ trigger()
 
 
 
-##控件事件
+## 控件事件
 
 控件有两种默认事件：
 
@@ -186,10 +189,10 @@ trigger()
 
 
 
-##创建自定义事件
+## 创建自定义事件
 
 
-要使用自定义事件创建事件分派器，需要首先在类中注册事件名称，然后创建同名的方法。
+要使用自定义事件创建事件分发器，需要首先在类中注册事件名称，然后创建同名的方法。
 
 例如下面这段代码所示：
 
@@ -216,11 +219,11 @@ class MyEventDispatcher(EventDispatcher):
 
 
 
-##附加回调
+## 附加回调
 
 
 
-要利用一个事件，必须要对其绑定回调。当事件被分派的时候，该特定事件相关的参数将被用于调用回调。
+要利用一个事件，必须要对其绑定回调。当事件被分发的时候，该特定事件相关的参数将被用于调用回调。
 
 回调可以使Python中能进行调用的任意内容，函数或者方法都可以，但一定要确保回调要接收**事件**发出的参数。最安全的常规做法是接收* args参数，将所有参数都存放成一个参数列表。
 
@@ -245,7 +248,7 @@ ev.do_something('test')
 
 
 
-##简介属性Properties
+## 简介属性Properties
 
 
 >群友`十月的天空` 提示：attribute 和 property 都翻译成了 属性， 字面上确实没错，但是读起来就莫名其妙了。 从本质上讲 property是 kivy 特色，个人理解 property 包含于attitude 而且绑定 widget 类，是否可以翻译成`控件属性` 或者 `构件属性` 之类。
@@ -273,7 +276,7 @@ ev.do_something('test')
 
 
 
-##属性声明
+## 属性声明
 
 要声明`控件属性`（Properties），必须要在类的层次上进行声明。接下来这个类才能在你创建对象的时候对真是的属性（attributes）进行实例化。此`控件属性`（Properties）非彼属性（attributes），`控件属性` Properties是根据你的attributes来创建事件的机制，例如：
 
@@ -294,13 +297,13 @@ def __init__(self, **kwargs):
 
 
 
-##分派属性事件
+## 分发属性事件
 
 
 Kivy的`控件属性`Property，默认提供了一个on_事件。在属性被改变的时候，就会调用这个事件了。
 
 
-####特别注意
+#### 特别注意
 
 如果属性的新值与当前已有的值相等，那么on_事件就不会被调用了。
 
@@ -369,7 +372,7 @@ def on_pressed(self, instance, pos):
 
 
 
-####特别注意
+#### 特别注意
 
 
 这个on_事件是在类内定义属性的位置被调用。在定义该属性的类之外，若要监控/观察一个属性的任何变动，就必须丢这个属性进行bind绑定操作。
@@ -516,4 +519,4 @@ def btn_pressed(self, instance, pos):
 
 这里的cursor_pos（光标位置的意思）就是一个[别名属性AliasProperty](http://kivy.org/docs/api-kivy.properties.html#kivy.properties.AliasProperty "kivy.properties.AliasProperty")，它有一个getter函数，名为_get_cursor_pos()，然后没有设置setter函数，这就说明这个属性是**只读**的。
 
-最末尾那一段的bind参数的意思是，当在bind=这个等号后括号内的属性中有任意的一个发生变化，都会分派on_cursor_pos事件。
+最末尾那一段的bind参数的意思是，当在bind=这个等号后括号内的属性中有任意的一个发生变化，都会分发on_cursor_pos事件。
